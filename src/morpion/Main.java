@@ -12,21 +12,24 @@ public class Main {
         Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         SIZE = (int)dimension.getHeight()/2;
 
-        frame frame = new frame();
-        JFrame f = new JFrame("Morpion");
-        Game game = new Game(SIZE);
+        //create the bottom text
         JLabel text = new JLabel("Tour du joueur : Bleu.");
         text.setBounds(10,SIZE,SIZE,28);
-        f.add(text);
-        f.add(frame);
 
+        //create the interface
+        Game game = new Game(SIZE);
+        frame frame = new frame();
         frame.setSizeF(SIZE);
         frame.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                game.click(e.getX(),e.getY(), frame, text);
+                if(winner==0)game.click(e.getX(),e.getY(), frame, text);
             }
         });
 
+        //create the Jframe
+        JFrame f = new JFrame("Morpion");
+        f.add(text);
+        f.add(frame);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(SIZE+50, SIZE+150);
         f.setVisible(true);
