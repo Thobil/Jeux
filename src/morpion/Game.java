@@ -12,6 +12,13 @@ public class Game {
          size = sizeF;
     }
 
+    /**
+     * transform the click to coords and change player
+     * @param x coord x click
+     * @param y coord y click
+     * @param f frame object
+     * @param l label object
+     */
     void click(int x, int y, frame f, JLabel l){
         if(x<size/3)setX(0);
         else if(x>size*2/3)setX(2);
@@ -26,6 +33,10 @@ public class Game {
         changeJoueur(l);
     }
 
+    /**
+     * Change the player and the text
+     * @param l label object
+     */
     private void changeJoueur(JLabel l){
         if(getJoueur()==1){
             setJoueur(2);
